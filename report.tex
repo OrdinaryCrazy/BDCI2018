@@ -1,11 +1,10 @@
 \documentclass[UTF8]{article}
 \usepackage{ctex}
 \usepackage{amsmath}
-\usepackage{amssymb}
 \usepackage{listings}
 \usepackage{graphicx}
 
-\usepackage{caption}
+
 \begin{document}
 % 词向量 部分 begin
 \paragraph{\large 3.2.4 lstm词向量}
@@ -54,13 +53,14 @@
 
 % Ensembling 部分 begin
 \paragraph{\large 3.3.5 集成学习Ensemble}
+\subparagraph{}
 集成学习通过构建并结合多个学习器来完成学习任务,一般的结构为先产生一组个体学习器，再用某种策略把他们结合起来，典型的有AdaBoost算法、bagging算法和随机森林算法。现在也有人将当下主流的各种NN models进行集成来达到更强的泛化能力与强健性，这与集成学习的概念有所出入但是效果类似。（参考西瓜书P171）
 \begin{center}
 \includegraphics[width=0.8\linewidth]{5.PNG}
 \end{center}
 \centerline{集成学习示意图}
-\subparagraph{boosting}Boosting是一族可将弱学习器提升为强学习器的算法。这一族算法的工作机制都是类似的：先从初始训练集训练出一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的训练样本在后续受到更多关注，然后基于调整后的样本分布来训练下一个基学习器
-\subparagraph{bagging}bagging算法以自助采样法（bootstrap sampling）为基础，从m个数据中\textbf{随机有放回地}取m个数据，约有近三分之一$(\ lim_ {m \to + \infty} \ (1 - \frac{1}{m})^m)$的样本不会被选中，将这些样本作为测试集,其余作为训练集。于是，我们可以采样出T个含m个训练样本的采样集，然后基于每个采样集训练出一个基学习器，再集成，这就是Bagging的基本流程。（参考西瓜书P173，P178）
+\subparagraph{Boosting}Boosting是一族可将弱学习器提升为强学习器的算法。这一族算法的工作机制都是类似的：先从初始训练集训练出一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的训练样本在后续受到更多关注，然后基于调整后的样本分布来训练下一个基学习器
+\subparagraph{Bagging}Bagging算法以自助采样法（bootstrap sampling）为基础，从m个数据中\textbf{随机有放回地}取m个数据，约有近三分之一$(\ lim_ {m \to + \infty} \ (1 - \frac{1}{m})^m)$的样本不会被选中，将这些样本作为测试集,其余作为训练集。于是，我们可以采样出T个含m个训练样本的采样集，然后基于每个采样集训练出一个基学习器，再集成，这就是Bagging的基本流程。（参考西瓜书P173，P178）
 \subparagraph{}自助法在数据集较小时很有用，并且能从初始数据集中产生多个不同的训练集，这对集成学习有很大的好处。 （西瓜书）
 
 % Ensembling 部分 end
@@ -71,7 +71,7 @@
 \paragraph{\large 3.3.6 LSTM}.
 \subparagraph{}LSTM网络非常适合基于时间序列数据进行分类，处理和预测，因为在时间序列中的重要事件之间可能存在未知持续时间的滞后。LSTM能够捕捉到这些滞后的关联。
 \subparagraph{}LSTM单元有几种架构。通用架构由存储器单元，输入门，输出门和遗忘门组成。
-\subparagraph{一些思考} 有论文对主流的深度学习模型进行了比较，指出LSTM在各类任务中表现优异，有十足的健壮性（robust），唯独在关键词识（keyphrase recognition）别例如情感识别中表现不如其他（当然也不差）。我觉得原因有在于句子的情感往往是鲜明的，反应在学习器的输出上的话这些输出值应当不是很连续的（趋向两级），LSTM捕捉的前后关联自然是没有精准定位情感词来的简单有效。（加上本身中立数据较多,使过拟合更为明显）
+\subparagraph{一些思考} 有论文对主流的深度学习模型进行了比较，指出LSTM在各类任务中表现优异，有十足的健壮性（robust），唯独在关键词识别（keyphrase recognition）例如情感识别中表现不如其他（当然也不差）。我觉得原因在于句子的情感往往是鲜明的，反应在学习器的输出上的话这些输出值的分布应当不是很均匀的（趋向两级），LSTM捕捉的前后关联自然是没有精准定位情感词来得简单有效。（加上本身中立数据较多,使过拟合更为明显）
 
 
 \begin{center} %插入的图片居中表示

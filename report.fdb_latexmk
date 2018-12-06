@@ -1,9 +1,9 @@
 # Fdb version 3
-["xdvipdfmx"] 1544105603 "report.xdv" "report.pdf" "report" 1544105605
-  "report.xdv" 1544105603 50948 a079930e698494f9f35b23f346a1adaf "xelatex"
+["xdvipdfmx"] 1544106132 "report.xdv" "report.pdf" "report" 1544106133
+  "report.xdv" 1544106131 50940 13ed8779878e301320ec0a9b5a718bb8 "xelatex"
   (generated)
   "report.pdf"
-["xelatex"] 1544105596 "report.tex" "report.xdv" "report" 1544105605
+["xelatex"] 1544106128 "report.tex" "report.xdv" "report" 1544106133
   "1.PNG" 1544090170 48597 9e725330db0685bb1bff176904265488 ""
   "2.PNG" 1544090184 62035 4f2a6e2177d71cb5469e5ca8a62e7234 ""
   "3.PNG" 1544090237 51755 24e4cf44e9dc8d105ca40ef1393898a7 ""
@@ -12,12 +12,6 @@
   "C:/Users/dell/AppData/Local/MiKTeX/2.9/miktex/data/le/xetex/xelatex.fmt" 1544094199 15601910 98fda8df9b1016772b397adf2d80a6e1 ""
   "C:/Windows/Fonts/msyh.ttc" 1523489648 19647736 ff2e53a6131130a07589812ea5b5b0d0 ""
   "D:/MikTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
-  "D:/MikTeX/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1233951854 916 f87d7c45f9c908e672703b83b72241a3 ""
-  "D:/MikTeX/fonts/tfm/public/amsfonts/symbols/msam5.tfm" 1233951854 924 9904cf1d39e9767e7a3622f2a125a565 ""
-  "D:/MikTeX/fonts/tfm/public/amsfonts/symbols/msam7.tfm" 1233951854 928 2dc8d444221b7a635bb58038579b861a ""
-  "D:/MikTeX/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1233951854 908 2921f8a10601f252058503cc6570e581 ""
-  "D:/MikTeX/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1233951854 940 75ac932a52f80982a9f8ea75d03a34cf ""
-  "D:/MikTeX/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1233951854 940 228d6584342e91276bf566bcf9716b83 ""
   "D:/MikTeX/fonts/tfm/public/cm/cmex10.tfm" 1136765053 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
   "D:/MikTeX/fonts/tfm/public/cm/cmmi10.tfm" 1136765053 1528 abec98dbc43e172678c11b3b9031252a ""
   "D:/MikTeX/fonts/tfm/public/cm/cmr10.tfm" 1136765053 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
@@ -26,10 +20,6 @@
   "D:/MikTeX/tex/generic/unicode-data/CaseFolding.txt" 1528522872 82264 414436796cf097df55f798e1585448ee ""
   "D:/MikTeX/tex/generic/unicode-data/SpecialCasing.txt" 1528522848 16830 6aa212ab1dfb2cde4b68c186ab08bd42 ""
   "D:/MikTeX/tex/generic/unicode-data/UnicodeData.txt" 1528522844 1769137 acc291106c3758d2025f8d7bd5518bee ""
-  "D:/MikTeX/tex/latex/amsfonts/amsfonts.sty" 1358197772 5949 3f3fd50a8cc94c3d4cbf4fc66cd3df1c ""
-  "D:/MikTeX/tex/latex/amsfonts/amssymb.sty" 1358197772 13829 94730e64147574077f8ecfea9bb69af4 ""
-  "D:/MikTeX/tex/latex/amsfonts/umsa.fd" 1358197772 961 6518c6525a34feb5e8250ffa91731cff ""
-  "D:/MikTeX/tex/latex/amsfonts/umsb.fd" 1358197772 961 d02606146ba5601b5645f987c92e6193 ""
   "D:/MikTeX/tex/latex/amsmath/amsbsy.sty" 1523116387 2283 ca7ce284ab93c8eecdc6029dc5ccbd73 ""
   "D:/MikTeX/tex/latex/amsmath/amsgen.sty" 1523116388 4297 7f6eb9092061a11f87d08ed13515b48d ""
   "D:/MikTeX/tex/latex/amsmath/amsmath.sty" 1523116388 87175 7292177bb735c466b78634ee4efd537e ""
@@ -41,8 +31,6 @@
   "D:/MikTeX/tex/latex/base/size10.clo" 1527456798 8294 b0f177401f895563eb19304d2389582d ""
   "D:/MikTeX/tex/latex/base/ts1enc.def" 1527456802 7769 97b639552068544f7c98d557abb19f41 ""
   "D:/MikTeX/tex/latex/base/tuenc.def" 1527456802 27168 42abd59d42cbe631d7724c2ff661b469 ""
-  "D:/MikTeX/tex/latex/caption/caption.sty" 1538983564 68576 86bbc6bd5a409b3c353fccc1a815fa5b ""
-  "D:/MikTeX/tex/latex/caption/caption3.sty" 1538983564 68510 943558eecf41da4e76fc614fd7f5deff ""
   "D:/MikTeX/tex/latex/cjk/CJKfntef.sty" 1429339888 12851 a92a26031294f6fa88114f524b3b794a ""
   "D:/MikTeX/tex/latex/ctex/config/ctex-name-utf8.cfg" 1525284078 1880 2113684d901945fa76cc6c4394ce8775 ""
   "D:/MikTeX/tex/latex/ctex/config/ctex.cfg" 1525284078 1341 5e7ff6d23b5ee8efb11113aa79e92b04 ""
@@ -85,9 +73,9 @@
   "D:/MikTeX/tex/xelatex/xecjk/xeCJK.cfg" 1525077316 413 46ef72e601a74df714ffedac8cd3b514 ""
   "D:/MikTeX/tex/xelatex/xecjk/xeCJK.sty" 1525077316 180953 728fabde42d4320c437d64319abe1fa4 ""
   "D:/MikTeX/tex/xelatex/xecjk/xeCJKfntef.sty" 1525077316 40261 86f20d70ec788243adbbf28c15e7e387 ""
-  "report.aux" 1544105603 1612 660bcdf4d492e4afbb9b54676246c40c ""
-  "report.tex" 1544105593 8071 c79db34e99a7c129c7d9c887fd66152d ""
+  "report.aux" 1544106131 1665 fdf3487322c6e894b9fa5d5f236d6b27 ""
+  "report.tex" 1544106123 8052 36f50332d498d15900d07ac247dae924 ""
   (generated)
   "report.log"
-  "report.xdv"
   "report.aux"
+  "report.xdv"
