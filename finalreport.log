@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.10.27)  5 DEC 2018 23:48
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.10.27)  6 DEC 2018 21:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1498,18 +1498,127 @@ Underfull \hbox (badness 10000) in paragraph at lines 61--64
 
  []
 
+Runaway argument?
+{ 
+! Paragraph ended before \@ssect was complete.
+<to be read again> 
+                   \par 
+l.83 
+     
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Too many }'s.
+l.87     }
+          
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+Runaway argument?
+{ 
+! Paragraph ended before \@ssect was complete.
+<to be read again> 
+                   \par 
+l.89 
+     
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Too many }'s.
+l.93     }
+          
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--94
+
+ []
+
 [3]
-Overfull \vbox (82.49876pt too high) has occurred while \output is active []
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <15.05624> on input line 95.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9.03374> on input line 95.
 
+Runaway argument?
+{ 
+! Paragraph ended before \@ssect was complete.
+<to be read again> 
+                   \par 
+l.103 
+      
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
 
-[4] [5] (./finalreport.aux) ) 
+! Too many }'s.
+l.107     }
+           
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+Runaway argument?
+{ 
+! Paragraph ended before \@ssect was complete.
+<to be read again> 
+                   \par 
+l.109 
+      
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Too many }'s.
+l.117     }
+           
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+Runaway argument?
+{ 
+! Paragraph ended before \@ssect was complete.
+<to be read again> 
+                   \par 
+l.120 
+      
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Too many }'s.
+l.124     }
+           
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+Runaway argument?
+{ 
+! Paragraph ended before \@ssect was complete.
+<to be read again> 
+                   \par 
+l.128 
+      
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Too many }'s.
+l.132     }
+           
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+[4] [5] [6] [7] (./finalreport.aux) ) 
 Here is how much of TeX's memory you used:
- 20268 strings out of 492998
- 426191 string characters out of 6136604
- 464446 words of memory out of 5000000
- 24089 multiletter control sequences out of 15000+600000
- 534262 words of font info for 64 fonts, out of 8000000 for 9000
+ 20340 strings out of 492998
+ 430188 string characters out of 6136604
+ 466446 words of memory out of 5000000
+ 24156 multiletter control sequences out of 15000+600000
+ 536095 words of font info for 71 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  48i,6n,69p,10439b,266s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on finalreport.pdf (5 pages).
+Output written on finalreport.pdf (7 pages).
