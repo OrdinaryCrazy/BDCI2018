@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6840 64-bit) (preloaded format=xelatex 2018.12.6)  6 DEC 2018 22:04
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6840 64-bit) (preloaded format=xelatex 2018.12.6)  6 DEC 2018 22:13
 entering extended mode
 **./report.tex
 (report.tex
@@ -716,4 +716,4 @@ Here is how much of TeX's memory you used:
  1328 hyphenation exceptions out of 8191
  52i,5n,68p,369b,1499s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on report.xdv (6 pages, 50964 bytes).
+Output written on report.xdv (6 pages, 50948 bytes).
