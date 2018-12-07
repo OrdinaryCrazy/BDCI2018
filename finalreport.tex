@@ -179,6 +179,12 @@
    Word2vec是一组用于生成单词嵌入的相关模型。这些模型是浅层的双层神经网络，经过训练可以重建语言的语言环境。Word2vec将大量文本作为其输入，并产生通常为几百维的向量空间，语料库中的每个唯一单词在空间中被分配相应的向量。单词向量位于向量空间中，使得在语料库中共享共同上下文的单词在空间中彼此非常接近地定位。
    \end{large}
    }
+   \paragraph*{
+   
+   \begin{large}
+   这次实验中我们是在数据集上直接训练的Word2vec模型，并没有借助外部数据训练，简单测试表现训练得到的模型对于主题相关词和情感相关词的判断直观上符合逻辑。然后我们将词向量维度设置为100维并测得每条评论的关键词长度最多为80, 于是我们将每条评论中关键字的特征向量依次排列，不足的padding为零，得到一个100*80的矩阵作为LSTM模型的输入（带卷积池化层转换为一维特征向量）。
+   \end{large}
+   }
 % 词向量 部分 end
 
     \subsection{学习方法}
@@ -242,6 +248,7 @@
 		\paragraph*{
  		
  		\begin{large}自助法在数据集较小时很有用，并且能从初始数据集中产生多个不同的训练集，这对集成学习有很大的好处。 （西瓜书）
+ 		在这次实验中我们使用sklearn.ensemble框架中的VotingClassifier集成模型集成了逻辑回归模型(LR)朴素贝叶斯模型(NB)多层感知机模型(MLP)随机森林模型(RF)四种模型对情感和主题进行分类学习。
 		\end{large}}
 
 % Ensembling 部分 end
@@ -324,46 +331,49 @@
     }
    \section{试验结果}
    	\subsection{线上比赛结果}
-   	\paragraph*{
-    
- 	\begin{large}
-   最终最佳结果：\\
-   线上其他选手最高成绩：\\
-   \end{large}
-    }
+   	\noindent
+	\large
+   最终最佳结果：A榜： 0.60918770000；B榜：0.61174583000\\
+   线上其他选手最高成绩：A榜： 0.66085330；B榜：0.66480136
+
    	\subsection{各种方法的结果与分析}
-   	\paragraph*{
-    
+\noindent
+ 	\begin{center}
  	\begin{large}
    	\begin{tabular}{|c|c|}
    	\hline 
-   	BOW + MLP & • \\ 
+   	BOW + MLP & 0.46138483000 \\ 
    	\hline 
-   	LDA + LR & • \\ 
+   	LDA + LR & 0.44940080000 \\ 
    	\hline 
-   	LDA + MLP & • \\
+   	LDA + MLP & 0.50000000000 \\
    	\hline 
-   	LDA + RF & • \\
+   	LDA + MLP + LSTM（情感） & 0.41810918000 \\
    	\hline 
-   	TFIDF + MLP & • \\
+   	LDA + RF & 0.53928095000 \\
    	\hline 
-   	TFIDF + RF & • \\
+   	LDA + RF + LSTM（情感） & 0.44207722000 \\
    	\hline 
-   	TFIDF + ENSMBLE & • \\
+   	TFIDF + MLP & 0.56391480000 \\
+   	\hline 
+   	TFIDF + RF & 0.58521970000 \\
+   	\hline 
+   	TFIDF + RF + LSTM（情感） & 0.41877496000 \\
+   	\hline 
+   	TFIDF + ENSMBLE & 0.60918770000 \\
    	\hline 
    	\end{tabular} 
    	\end{large}
-    }
+ 	\end{center}
+	我们看到，因为LSTM模型在情感分类上过拟合严重，实际没有什么贡献（也有可能是我们的实现过于粗糙，模型健壮性不好），另外使用LDA特征向量的表现结果比使用TFIDF的效果差很多，可能是LDA模型不适用于这一问题的特征造成的，其余表现情况则是多层感知机模型强于一般的机器学习模型，随机森林模型更强，进一步集成的模型表现出更好的结果。
    	\subsection{没有解决的问题和主要困难}
-   	\paragraph*{
-    
- 	\begin{large}
- 	1. 对于LSTM模型的采样 \\
- 	2. 对于LDA主题模型 \\
- 	3. 组合标签 \\
- 	4. 阈值 \\
- 	\end{large}
-    }
+	\noindent
+ 	\large
+ 	1. 因为LSTM模型在对情感分类的学习中表现出严重的过拟合，如何通过采样特征表示得到新的样例 \\
+ 	2. 对于LDA主题模型实验效果欠佳的解释 \\
+ 	3. 将标签进行组合之后，每一类标签的实例数量更少，学习效果下降 \\
+ 	4. 如何学习多主题分类的合理输出阈值 
+
    \section{附录}
     \subsection{个人收获}
     \noindent
@@ -372,21 +382,23 @@
     1. 此次调研的最大收获是对NLP和机器学习有了基本的认识，了解到了不同的模型，也激起了我继续学习相关知识的兴趣。  \\
 	2. 感受到了理论和实践之间的巨大Gap，遇到了数据分析过程中一些很实际的问题，真切感受到了数据分析的一些困难，也激起了我对于利用数据科学解决这些困难的兴趣。\\
 	3. 理解数据非常重要！恰当得处理数据比模型更重要。\\
-	4. 感受到了动手能力的不足，要多锻炼这方面的能力！\\
+	4. 感受到了动手能力的不足，要多锻炼这方面的能力！\\[10pt]
     张劲暾：\\
-    1. 学习了 \\
-    2. 参与了一次\\
-    3. 积累了
+    1. 学习了关于LDA和LSTM模型的相关知识和相关机器学习框架的编程使用； \\
+    2. 参与了一次线上正式比赛，意识到与优秀选手的差距；\\
+    3. 积累了团队合作分工、机器学习工程构建的经验。
    	\subsection{分工说明}
    	\noindent
  	吴雨菲：\\
     何秦兴：\\
+    1. LSTM模型调研与编程实验\\
+    2. 期末报告编写（3.3.4 , 3.3.5, 3.3.6, 3.2.4 部分）\\[10pt]
     张劲暾：(组长)\\
     1. 工作分配协调\\
-    2. LDA主题模型 \\
-    3. 框架代码实现和线上测试提交的主要任务 \\
-    4. 和何秦兴 \\
-    5. 期末报告编写（1,2,4,）排版 \\
+    2. LDA主题模型调研与编程实验 \\
+    3. 框架代码实现与方案具体实现，线上测试提交和比对调整参数 \\
+    4. 和何秦兴合作完成LSTM模型编程实现 \\
+    5. 期末报告编写（1,2,4 部分）排版 \\
    \section{参考文献}
    \noindent
    1. wikipedia:LSTM\\
@@ -397,6 +409,22 @@
    5. \href {http://papers.nips.cc/paper/2698-sharing-clusters-among-related-groups-hierarchical-dirichlet-processes.pdf}
    {Sharing Clusters Among Related Groups:Hierarchical Dirichlet Processes}\\
    6. \href {https://cosx.org/2013/03/lda-math-text-modeling/}
-   {LDA-math - 文本建模}
+   {LDA-math - 文本建模}\\
+   7. \href {http://www.cnblogs.com/pinard/p/6831308.html}
+   {文本主题模型之LDA(一) LDA基础}\\
+   8. \href {http://www.cnblogs.com/pinard/p/6867828.html}
+   {文本主题模型之LDA(二) LDA求解之Gibbs采样算法}\\
+   9. \href {http://www.cnblogs.com/pinard/p/6873703.html}
+   {文本主题模型之LDA(三) LDA求解之变分推断EM算法}\\
+   10. \href {https://blog.csdn.net/pipisorry/article/details/42560693}
+   {主题模型TopicModel：Unigram、LSA、PLSA模型}\\
+   11. \href {https://blog.csdn.net/pipisorry/article/details/42649657}
+   {主题模型TopicModel：隐含狄利克雷分布LDA}\\
+   12. \href {https://www.cnblogs.com/jiang1st2010/archive/2013/05/12/3076331.html}
+   {Dirichlet Process 和 Hierarchical Dirichlet Process}\\
+   13. \href {https://blog.csdn.net/sysuhu/article/details/54378468}
+   {分层Dirichlet过程（HDP）的理解}\\
+   14. \href {http://www.datalearner.com/blog/1051487944219663}
+   {层次狄利克雷过程（Hierarchical Dirichlet Processes）}\\
    
 \end{document}

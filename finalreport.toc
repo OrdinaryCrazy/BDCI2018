@@ -21,11 +21,11 @@
 \contentsline {subsubsection}{\numberline {3.3.2}朴素贝叶斯模型（NB）}{6}{subsubsection.3.3.2}
 \contentsline {subsubsection}{\numberline {3.3.3}多层感知机模型（MLP）}{6}{subsubsection.3.3.3}
 \contentsline {subsubsection}{\numberline {3.3.4}随机森林模型（RF）}{6}{subsubsection.3.3.4}
-\contentsline {subsubsection}{\numberline {3.3.5}集成模型（Ensemble）}{6}{subsubsection.3.3.5}
+\contentsline {subsubsection}{\numberline {3.3.5}集成模型（Ensemble）}{7}{subsubsection.3.3.5}
 \contentsline {subparagraph}{Boosting}{7}{section*.5}
 \contentsline {subparagraph}{Bagging}{7}{section*.6}
-\contentsline {subsubsection}{\numberline {3.3.6}长短期循环神经网络（LSTM）}{7}{subsubsection.3.3.6}
-\contentsline {subparagraph}{一些思考}{7}{section*.7}
+\contentsline {subsubsection}{\numberline {3.3.6}长短期循环神经网络（LSTM）}{8}{subsubsection.3.3.6}
+\contentsline {subparagraph}{一些思考}{8}{section*.7}
 \contentsline {subparagraph}{}{8}{section*.8}
 \contentsline {subparagraph}{}{8}{section*.9}
 \contentsline {subparagraph}{}{9}{section*.10}
@@ -35,7 +35,7 @@
 \contentsline {subsection}{\numberline {4.1}线上比赛结果}{11}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}各种方法的结果与分析}{11}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}没有解决的问题和主要困难}{11}{subsection.4.3}
-\contentsline {section}{\numberline {5}附录}{11}{section.5}
-\contentsline {subsection}{\numberline {5.1}个人收获}{11}{subsection.5.1}
+\contentsline {section}{\numberline {5}附录}{12}{section.5}
+\contentsline {subsection}{\numberline {5.1}个人收获}{12}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}分工说明}{12}{subsection.5.2}
-\contentsline {section}{\numberline {6}参考文献}{12}{section.6}
+\contentsline {section}{\numberline {6}参考文献}{13}{section.6}
