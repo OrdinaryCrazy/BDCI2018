@@ -1,20 +1,23 @@
 \documentclass[a4paper]{article} 
-\author{
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ 
-何秦兴 PB16110299 \\ \\ 
-吴雨菲 PB15020525 \\ \\
-张劲暾 PB16111485 \\ \\ \\ \\
+\author{ 
+\large
+何秦兴 PB16110299 \\[15pt] 
+吴雨菲 PB15020525 \\[15pt]
+张劲暾 PB16111485 \\[15pt]
 }
 \title{
-	\begin{huge}
-	\textbf{汽车行业用户观点主题及情感识别}\quad\\[26pt]
-\end{huge} 
-	\\——数据科学导论期末报告\\[3pt]
+	\begin{Huge}
+	\textbf
+	汽车行业用户观点主题及情感识别\\[26pt]
+	\end{Huge}
+	{\huge ——数据科学导论期末报告\\[280pt]}
 }
 \usepackage{xeCJK}
 \usepackage{geometry}
 \usepackage{ctex}
-\usepackage{indentfirst} 
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage[colorlinks,linkcolor=red]{hyperref}
 %\usepackage{CJK}
 %\setCJKmainfont{AR PL UKai CN}
 %\setCJKmainfont{AR PL UMing TW}
@@ -110,7 +113,8 @@
  	\begin{large}
     文本的数量特征对模型设计的影响：    
     文本长度普遍较短，可以提取的特征较少，所以需要提取有效的特征；
-    多标签问题：每个实例可能对应多个主题标签，而且对于不同的主题标签还有可能是不同的情感分类，这样多主题的数据大概占到总数据的15\%，这一点对于我们采用的主题、情感分开学习，不区分同一ID的不同数据实例的设计方案是不太友好的，参考成功的比赛选手的方案，应该将情感和主题组合得到30个标签进行学习，以解决多标签问题。
+    多标签问题：每个实例可能对应多个主题标签，而且对于不同的主题标签还有可能是不同的情感分类，这样多主题的数据大概占到总数据的15\%，这一点对于我们采用的主题、情感分开学习，不区分同一ID的不同数据实例的设计方案是不太友好的，参考成功的比赛选手的方案，应该将情感和主题组合\end{large} 
+  }得到30个标签进行学习，以解决多标签问题。
     数据数量偏少，只有不到一万条；
     数据质量差，很多主题情感标签模糊，对于很多正面或者负面的评论笼统标注为中性，中性情感标签明显多余另外两类，造成一定的学习过拟合问题，特别是对于LSTM模型的学习影响较大。
    \end{large}
@@ -125,7 +129,7 @@
     \paragraph*{
     
  	\begin{large}
-    对于从文本特征空间到标签的映射关系学习，我们将对于情感标签的学习和尝试了逻辑回归模型（LR）、朴素贝叶斯模型（NB）、多层感知机模型（MLP）和多层感知机模型（MLP），最终选择将这些模型进行集成
+    对于从文本特征空间到标签的映射关系学习，我们将对于情感标签的学习和尝试了逻辑回归模型（LR）、朴素贝叶斯模型（NB）、多层感知机模型（MLP）和多层感知机模型（MLP），最终选择将这些模型进行集成，用最终得到的集成模型分别对情感标签和主题标签进行学习分类。
    \end{large}
     }
    \section{方法说明}
@@ -133,7 +137,7 @@
    	\paragraph*{
     
  	\begin{large}
-    我们首先去除了非中文符号，并且找到了一份通用的汉语停用词表，人工去除了其中
+    我们首先去除了非中文符号，并且找到了一份通用的汉语停用词表，人工去除了其中可能与主题和情感取向有关的词语，然后分别调用了jieba分词包和THULAC分词包对评论进行分词预处理，jieba分词的结果较为零散，而THULAC的分词结果更加接近于汉语习惯和常用词汇，但在同样的模型测试后，jieba分词得到的效果略好于THULAC，所以我们最终采用了jiaba包做分词处理。
    \end{large}
     }
     \subsection{特征提取}
@@ -141,26 +145,258 @@
      \subsubsection{词袋模型（BOW）}
      \subsubsection{TFIDF}
      \subsubsection{输入LSTM的词向量矩阵}
+     % 词向量 部分 begin
+ 		\paragraph{}
+ 词向量是NLP中最基本的概念之一，词向量将抽象的语言符号化数学化。主要分为两种：
+ \subparagraph{one-hot representation:\\}
+
+
+    举个例子:\\
+    “话筒”表示为 [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 …]\\
+    “麦克”表示为 [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 …]\\
+    每个词都是茫茫 0 海中的一个 1。 
+
+
+
+   \subparagraph{distributed  representation:\\}
+    形如[0.792, −0.177, −0.107, 0.109, −0.542, …]
+  \paragraph*{
+  
+  \begin{large}
+   Distributed representation 最大的贡献就是让相关或者相似的词，在距离上更接近了。向量的距离可以用最传统的欧氏距离来衡量，也可以用 cos 夹角来衡量。用这种方式表示的向量，“麦克”和“话筒”的距离会远远小于“麦克”和“天气”。可能理想情况下“麦克”和“话筒”的表示应该是完全一样的，但是由于有些人会把英文名“迈克”也写成“麦克”，导致“麦克”一词带上了一些人名的语义，因此不会和“话筒”完全一致。
+   \end{large} 
+  }
+   \paragraph*{
+   
+   \begin{large} 
+   我使用的就是分布式表示，即词嵌入（word embedding），我在实现时直接利用了python gensim包里的word2vec。
+   \end{large}
+   }
+   
+   \paragraph*{
+   
+   \begin{large}
+   Word2vec是一组用于生成单词嵌入的相关模型。这些模型是浅层的双层神经网络，经过训练可以重建语言的语言环境。Word2vec将大量文本作为其输入，并产生通常为几百维的向量空间，语料库中的每个唯一单词在空间中被分配相应的向量。单词向量位于向量空间中，使得在语料库中共享共同上下文的单词在空间中彼此非常接近地定位。
+   \end{large}
+   }
+% 词向量 部分 end
+
     \subsection{学习方法}
    	 \subsubsection{逻辑回归模型（LR）}
    	 \subsubsection{朴素贝叶斯模型（NB）}
    	 \subsubsection{多层感知机模型（MLP）}
    	 \subsubsection{随机森林模型（RF）}
+   	 	% RF 部分 begin
+ 		\paragraph*{
+  
+  		\begin{large}
+  		对于样本较少的且不太均衡的数据来说，是很容易发生过拟合的。此处使用随机森林的出发点在于对于不平衡的分类资料集来说，随机森林的方法可以平衡误差，且由于随机森林的ensemble特点，它可以产生高准确度的分类器。
+		\end{large}}
+		\paragraph*{
+  
+  		\begin{large}
+  		随机森林即由很多决策树构成的森林，每棵决策树都是一个分类器（假设现在针对的是分类问题）。
+  		\end{large}}
+ 		\paragraph*{
+  
+  		\begin{large}
+  		随机森林的随机主要体现在两个方面：
+  		\end{large}}
+ 		\paragraph*{
+ 		
+ 		\begin{large}
+ 		\textbf{1. }数据选取的随机，类似于bagging算法中的自助采样法（bootstrap sampling），每一颗决策树都从m个数据中随机有放回地取m个数据，约有近三分之一样本的测试集，三分之二样本的训练集。
+ 		\end{large}}
+ 		
+ 		\paragraph*{
+ 		
+ 		\begin{large}
+ 		\textbf{2. }属性的随机，传统的决策树从当前节点的所有属性中选取一个最优属性，而随机森林的决策树先取一个含k个属性的子集，再在里面取最优，属性的扰动增加了个体学习器的差异度，增强了模型的泛化性能。
+ （西瓜书P179,P180）
+ 		\end{large}}
+
+ 		\paragraph*{
+ 		
+ 		\begin{large}
+ 		随机森林算法主要代码(待补充)
+
+ 		\lstset{language=python}
+ 		\begin{lstlisting}
+ 		\end{lstlisting}
+ 		\end{large}}
+% RF 部分 end
+
    	 \subsubsection{集成模型（Ensemble）}
+   	 % Ensembling 部分 begin
+		\paragraph*{
+ 		
+ 		\begin{large}
+		集成学习通过构建并结合多个学习器来完成学习任务,一般的结构为先产生一组个体学习器，再用某种策略把他们结合起来，典型的有AdaBoost算法、bagging算法和随机森林算法。现在也有人将当下主流的各种NN models进行集成来达到更强的泛化能力与强健性，这与集成学习的概念有所出入但是效果类似。（参考西瓜书P171）
+		\end{large}}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{5.PNG}
+\end{center}
+\centerline{集成学习示意图}
+\subparagraph{Boosting}Boosting是一族可将弱学习器提升为强学习器的算法。这一族算法的工作机制都是类似的：先从初始训练集训练出一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的训练样本在后续受到更多关注，然后基于调整后的样本分布来训练下一个基学习器
+\subparagraph{Bagging}Bagging算法以自助采样法（bootstrap sampling）为基础，从m个数据中\textbf{随机有放回地}取m个数据，约有近三分之一$(\ lim_ {m \to + \infty} \ (1 - \frac{1}{m})^m)$的样本不会被选中，将这些样本作为测试集,其余作为训练集。于是，我们可以采样出T个含m个训练样本的采样集，然后基于每个采样集训练出一个基学习器，再集成，这就是Bagging的基本流程。（参考西瓜书P173，P178）
+		\paragraph*{
+ 		
+ 		\begin{large}自助法在数据集较小时很有用，并且能从初始数据集中产生多个不同的训练集，这对集成学习有很大的好处。 （西瓜书）
+		\end{large}}
+
+% Ensembling 部分 end
    	 \subsubsection{长短期循环神经网络（LSTM）}
+% lstm 部分 begin
+%\paragraph{\large 3.3.6 LSTM}.
+	\paragraph*{
+ 		
+ 		\begin{large}LSTM网络非常适合基于时间序列数据进行分类，处理和预测，因为在时间序列中的重要事件之间可能存在未知持续时间的滞后。LSTM能够捕捉到这些滞后的关联。
+ 		\end{large}}
+\paragraph*{
+ 		
+ 		\begin{large}LSTM单元有几种架构。通用架构由存储器单元，输入门，输出门和遗忘门组成。\end{large}}
+\subparagraph{一些思考} 有论文对主流的深度学习模型进行了比较，指出LSTM在各类任务中表现优异，有十足的健壮性（robust），唯独在关键词识别（keyphrase recognition）例如情感识别中表现不如其他（当然也不差）。我觉得原因在于句子的情感往往是鲜明的，反应在学习器的输出上的话这些输出值的分布应当不是很均匀的（趋向两级），LSTM捕捉的前后关联自然是没有精准定位情感词来得简单有效。（加上本身中立数据较多,使过拟合更为明显）
+
+
+\begin{center} %插入的图片居中表示
+\includegraphics[width=0.8\linewidth]{1.PNG}
+\end{center}
+\centerline{遗忘门}
+\subparagraph{}遗忘门取前一次的细胞状态C$_t$$_-$$_1$为输入，根据需要调权重输出C$_t$$_-$$_1$的一部分
+
+\begin{center}
+\includegraphics[width=0.8\linewidth]{2.PNG}
+\end{center}
+\centerline{输入门}
+\subparagraph{}输入门决定让多少新的信息加入到细胞的状态中来
+
+\begin{center}
+\includegraphics[width=0.8\linewidth]{3.PNG}
+\end{center}
+\centerline{更新后的细胞状态C$_t$}
+\subparagraph{}输入门加上遗忘门就是新的细胞状态C$_t$
+
+\begin{center}
+\includegraphics[width=0.8\linewidth]{4.PNG}
+\end{center}
+\centerline{输出门}
+\subparagraph{}最后通过输出门，只输出我们想输出的部分，用于调节整个神经网络信息传递
+\newpage
+\lstset{language=python}
+\begin{lstlisting}[frame=shadowbox]
+	model = Sequential()
+    model.add(Embedding(output_dim=vocab_dim,
+                        input_dim=n_symbols,
+                        mask_zero=True,
+                        weights=[embedding_weights],
+                        input_length=input_length))
+    model.add(LSTM(output_dim=50, activation='tanh'))
+    model.add(Dropout(0.8))
+    model.add(Dense(3, activation='softmax'))
+    model.add(Activation('softmax'))
+
+    print('Compiling...')
+    model.compile(	loss='categorical_crossentropy',
+    				optimizer='adam',
+    				metrics=['accuracy'],
+    				sample_weight_mode='temporal')
+
+    print("Train...")
+    model.fit(	x_train, y_train, 
+    			batch_size=batch_size,
+                epochs=n_epoch, verbose=1)
+
+    print("Evaluate...")
+    score = model.evaluate(x_test, y_test,batch_size=batch_size)
+\end{lstlisting}
+% lstm 部分 end
     \subsection{提升和改进的思路}
+    \paragraph*{
+    
+    \begin{large}
+    首先是对于数据的利用，将给出的情感词利用起来拼在分词结果后面，加强对于情感词的学习，抵消分词不恰当的不利因素，在最终的结果中可以提升一到两个百分点。另外一些没来得及实验的提升设想： 
+    1. 对得到的TFIDF向量做PCA主成分分析提升可区分性；
+    2. 用引入attention机制的LSTM对情感分类进行学习；
+    3. 在词这一层面上对相同情感标签的评论采样生成新的样例，改善类不平衡问题；
+    4. 对于主题分类设置阈值，不仅仅是输出最有可能的主题标签，而是将可能性超过阈值的标签分条输出；
+    5. 不要将主题和情感分开学习，而是组合得到30种标签去学习，因为数据本来的特征就是对于不同的主题可能有不同的情感态度，这样更接近问题的本质。
+    \end{large}
+    }
    \section{试验结果}
    	\subsection{线上比赛结果}
+   	\paragraph*{
+    
+ 	\begin{large}
+   最终最佳结果：\\
+   线上其他选手最高成绩：\\
+   \end{large}
+    }
    	\subsection{各种方法的结果与分析}
+   	\paragraph*{
+    
+ 	\begin{large}
+   	\begin{tabular}{|c|c|}
+   	\hline 
+   	BOW + MLP & • \\ 
+   	\hline 
+   	LDA + LR & • \\ 
+   	\hline 
+   	LDA + MLP & • \\
+   	\hline 
+   	LDA + RF & • \\
+   	\hline 
+   	TFIDF + MLP & • \\
+   	\hline 
+   	TFIDF + RF & • \\
+   	\hline 
+   	TFIDF + ENSMBLE & • \\
+   	\hline 
+   	\end{tabular} 
+   	\end{large}
+    }
    	\subsection{没有解决的问题和主要困难}
+   	\paragraph*{
+    
+ 	\begin{large}
+ 	1. 对于LSTM模型的采样 \\
+ 	2. 对于LDA主题模型 \\
+ 	3. 组合标签 \\
+ 	4. 阈值 \\
+ 	\end{large}
+    }
    \section{附录}
     \subsection{个人收获}
+    \noindent
     吴雨菲：\\
     何秦兴：\\
-    张劲暾：
+    1. 此次调研的最大收获是对NLP和机器学习有了基本的认识，了解到了不同的模型，也激起了我继续学习相关知识的兴趣。  \\
+	2. 感受到了理论和实践之间的巨大Gap，遇到了数据分析过程中一些很实际的问题，真切感受到了数据分析的一些困难，也激起了我对于利用数据科学解决这些困难的兴趣。\\
+	3. 理解数据非常重要！恰当得处理数据比模型更重要。\\
+	4. 感受到了动手能力的不足，要多锻炼这方面的能力！\\
+    张劲暾：\\
+    1. 学习了 \\
+    2. 参与了一次\\
+    3. 积累了
    	\subsection{分工说明}
+   	\noindent
  	吴雨菲：\\
     何秦兴：\\
-    张劲暾：
+    张劲暾：(组长)\\
+    1. 工作分配协调\\
+    2. LDA主题模型 \\
+    3. 框架代码实现和线上测试提交的主要任务 \\
+    4. 和何秦兴 \\
+    5. 期末报告编写（1,2,4,）排版 \\
    \section{参考文献}
+   \noindent
+   1. wikipedia:LSTM\\
+   2. 周志华：《机器学习》\\
+   3. Wenpeng Yin,Katharina Kann,Mo Yu, Hinrich Schutze.2017.Comparative Study of CNN and RNN for Natural Language Processing  \\
+   4. \href {http://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf}
+   {Latent Dirichlet Allocation, May 2003, Journal of Machine Learning Research 3(4-5):993-1022, DOI: 10.1162/jmlr.2003.3.4-5.993}\\
+   5. \href {http://papers.nips.cc/paper/2698-sharing-clusters-among-related-groups-hierarchical-dirichlet-processes.pdf}
+   {Sharing Clusters Among Related Groups:Hierarchical Dirichlet Processes}\\
+   6. \href {https://cosx.org/2013/03/lda-math-text-modeling/}
+   {LDA-math - 文本建模}
+   
 \end{document}
