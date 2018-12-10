@@ -10,32 +10,32 @@
 \contentsline {subsection}{\numberline {3.1}分词}{5}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}特征提取}{5}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}隐含狄利克雷主题模型(LDA)}{5}{subsubsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2}词袋模型（BOW）}{5}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}TFIDF}{5}{subsubsection.3.2.3}
-\contentsline {subsubsection}{\numberline {3.2.4}输入LSTM的词向量矩阵}{5}{subsubsection.3.2.4}
-\contentsline {paragraph}{}{5}{section*.2}
-\contentsline {subparagraph}{one-hot representation:\\}{5}{section*.3}
-\contentsline {subparagraph}{distributed representation:\\}{5}{section*.4}
-\contentsline {subsection}{\numberline {3.3}学习方法}{6}{subsection.3.3}
-\contentsline {subsubsection}{\numberline {3.3.1}逻辑回归模型（LR）}{6}{subsubsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.2}朴素贝叶斯模型（NB）}{6}{subsubsection.3.3.2}
-\contentsline {subsubsection}{\numberline {3.3.3}多层感知机模型（MLP）}{6}{subsubsection.3.3.3}
-\contentsline {subsubsection}{\numberline {3.3.4}随机森林模型（RF）}{6}{subsubsection.3.3.4}
-\contentsline {subsubsection}{\numberline {3.3.5}集成模型（Ensemble）}{7}{subsubsection.3.3.5}
-\contentsline {subparagraph}{Boosting}{7}{section*.5}
-\contentsline {subparagraph}{Bagging}{7}{section*.6}
-\contentsline {subsubsection}{\numberline {3.3.6}长短期循环神经网络（LSTM）}{8}{subsubsection.3.3.6}
-\contentsline {subparagraph}{一些思考}{8}{section*.7}
-\contentsline {subparagraph}{}{8}{section*.8}
-\contentsline {subparagraph}{}{8}{section*.9}
-\contentsline {subparagraph}{}{9}{section*.10}
-\contentsline {subparagraph}{}{9}{section*.11}
-\contentsline {subsection}{\numberline {3.4}提升和改进的思路}{10}{subsection.3.4}
-\contentsline {section}{\numberline {4}试验结果}{11}{section.4}
-\contentsline {subsection}{\numberline {4.1}线上比赛结果}{11}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}各种方法的结果与分析}{11}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}没有解决的问题和主要困难}{11}{subsection.4.3}
-\contentsline {section}{\numberline {5}附录}{12}{section.5}
-\contentsline {subsection}{\numberline {5.1}个人收获}{12}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}分工说明}{12}{subsection.5.2}
-\contentsline {section}{\numberline {6}参考文献}{13}{section.6}
+\contentsline {subsubsection}{\numberline {3.2.2}词袋模型(BOW)}{7}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}TFIDF}{7}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.4}输入LSTM的词向量矩阵}{7}{subsubsection.3.2.4}
+\contentsline {paragraph}{}{7}{section*.2}
+\contentsline {subparagraph}{one-hot representation:\\}{7}{section*.3}
+\contentsline {subparagraph}{distributed representation:\\}{7}{section*.4}
+\contentsline {subsection}{\numberline {3.3}学习方法}{8}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}逻辑回归模型(LR)}{8}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}朴素贝叶斯模型(NB)}{9}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.3}多层感知机模型(MLP)}{10}{subsubsection.3.3.3}
+\contentsline {subsubsection}{\numberline {3.3.4}随机森林模型(RF)}{11}{subsubsection.3.3.4}
+\contentsline {subsubsection}{\numberline {3.3.5}集成模型(Ensemble)}{12}{subsubsection.3.3.5}
+\contentsline {subparagraph}{Boosting}{12}{section*.5}
+\contentsline {subparagraph}{Bagging}{12}{section*.6}
+\contentsline {subsubsection}{\numberline {3.3.6}长短期循环神经网络(LSTM)}{13}{subsubsection.3.3.6}
+\contentsline {subparagraph}{一些思考}{13}{section*.7}
+\contentsline {subparagraph}{}{13}{section*.8}
+\contentsline {subparagraph}{}{13}{section*.9}
+\contentsline {subparagraph}{}{14}{section*.10}
+\contentsline {subparagraph}{}{14}{section*.11}
+\contentsline {subsection}{\numberline {3.4}提升和改进的思路}{15}{subsection.3.4}
+\contentsline {section}{\numberline {4}试验结果}{16}{section.4}
+\contentsline {subsection}{\numberline {4.1}线上比赛结果}{16}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}各种方法的结果与分析}{16}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}没有解决的问题和主要困难}{16}{subsection.4.3}
+\contentsline {section}{\numberline {5}附录}{17}{section.5}
+\contentsline {subsection}{\numberline {5.1}个人收获}{17}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}分工说明}{17}{subsection.5.2}
+\contentsline {section}{\numberline {6}参考文献}{18}{section.6}

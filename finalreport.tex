@@ -2,7 +2,7 @@
 \author{ 
 \large
 何秦兴 PB16110299 \\[15pt] 
-吴雨菲 PB15020525 \\[15pt]
+吴雨菲 PB15020693 \\[15pt]
 张劲暾 PB16111485 \\[15pt]
 }
 \title{
@@ -207,7 +207,9 @@ LDA的联合概率为：
 	\end{large}	
 }
 
+\begin{center}
 $p ( \theta , \mathbf { z } , \mathbf { w } | \alpha , \beta ) = p ( \theta | \alpha ) \prod _ { n = 1 } ^ { N } p \left( z _ { n } | \theta \right) p \left( w _ { n } | z _ { n } , \beta \right)$
+\end{center}
 
 \paragraph*{
 	
@@ -410,9 +412,11 @@ $F ( x ) = \frac { 1 } { 1 + e ^ { - ( x - \mu ) / \gamma } }$($\mu$为位置参
 \end{large}
 }
 
+\begin{center}
 $\mathrm { P } ( \mathrm { y } = 1 | \mathrm { x } ) = \frac { e ^ { \omega ^ { T } x + b } } { 1 + e ^ { \mathrm { \omega } ^ { T } x + b } } \)
 \( \mathrm { P } ( \mathrm { y } = 0 | \mathrm { x } ) = \frac { 1 } { 1 + e ^ { \omega ^ { T } x + b } }$
 
+\end{center}
 
 \paragraph*{
 
@@ -428,7 +432,9 @@ $\mathrm { P } ( \mathrm { y } = 1 | \mathrm { x } ) = \frac { e ^ { \omega ^ { 
 \end{large}
 }
 
+\begin{center}
 $P ( y = k | x ) = \frac { e ^ { \omega _ { k } ^ { T } x + b } } { 1 + \sum _ { k } e ^ { \omega _ { k } ^ { T } x + b } }$
+\end{center}
 
 
 
@@ -447,7 +453,9 @@ _i$是特征词，$c_j$是类别)
 \end{large}
 }
 
+\begin{center}
 $P \left( c _ { j } | \omega \right) = \frac { P ( \omega | c _ { j } ) * P \left( c _ { j } \right) } { \sum _ { c _ { j } \in C } P ( \omega | c _ { j } ) * P \left( c _ { j } \right) }$
+\end{center}
 
 \paragraph*{
 
@@ -456,7 +464,9 @@ $P \left( c _ { j } | \omega \right) = \frac { P ( \omega | c _ { j } ) * P \lef
 \end{large}
 }
 
+\begin{center}
 $P \left( c _ { j } | \omega \right) = \frac { P \left( c _ { j } \right) * \prod _ { i } P \left( \omega _ { i } | c _ { j } \right) ^ { \omega _ { t } \left( \omega _ { i } \right) } } { \sum _ { c _ { j } \in C } P \left( c _ { j } \right) * \prod _ { i } P \left( \omega _ { i } | c _ { j } \right) ^ { \omega _ { t } \left( \omega _ { i } \right) } }$
+\end{center}
 
 
 \paragraph*{
@@ -466,8 +476,10 @@ $P \left( c _ { j } | \omega \right) = \frac { P \left( c _ { j } \right) * \pro
 \end{large}
 }
 
+\begin{center}
 $c = \arg \max _ { c _ { j } \in C } \left\{ P \left( c _ { j } \right) * \prod _ { i } P \left( \omega _ { i } | c _ { j } \right) ^ { \omega _ { t } \left( \omega _ { i } \right) } \right\}$
 
+\end{center}
 
 
 \paragraph*{
@@ -493,7 +505,9 @@ $P \left( c _ { j } \right) = \frac { \operatorname { Doc } \left( c _ { j } \ri
 \end{large}
 }
 
+\begin{center}
 $P \left( \omega _ { i } | c _ { j } \right) = \frac { \text {weight} \left( \omega _ { i } | c _ { j } \right) } { \sum _ { i } \text { weight } \left( \omega _ { i } | c _ { j } \right) }$
+\end{center}
 
 \paragraph*{
 
@@ -510,8 +524,10 @@ $P \left( \omega _ { i } | c _ { j } \right) = \frac { \text {weight} \left( \om
 \end{large}
 }
 
+\begin{center}
 $P \left( \omega _ { i } | c _ { j } \right) = \frac { \text {weight} \left( \omega _ { i } | c _ { j } \right) + \delta } { \sum _ { i } \text { weight } \left( \omega _ { i } | c _ { j } \right) + \delta * | V | } \)
 \( \mathrm { V } = \sum _ { c _ { j } \in C } \sum _ { i } \) weight \( \left( \omega _ { i } | c _ { j } \right)$
+\end{center}
 
 \paragraph*{
 
@@ -530,7 +546,7 @@ $P \left( \omega _ { i } | c _ { j } \right) = \frac { \text {weight} \left( \om
 }
 
 \begin{center}
-\includegraphics[width=0.8\linewidth]{6.PNG}
+\includegraphics[width=0.8\linewidth]{7.PNG}
 \end{center}
    	 
    	 \subsubsection{随机森林模型(RF)}
@@ -720,6 +736,8 @@ $P \left( \omega _ { i } | c _ { j } \right) = \frac { \text {weight} \left( \om
     \subsection{个人收获}
     \noindent
     吴雨菲：\\
+    1. 学习了常用的自然语言处理和机器学习算法的原理，了解了不同模型应用的区别。\\
+    2. 感受到工程实践能力和团队配合的重要性。\\[10pt]
     何秦兴：\\
     1. 此次调研的最大收获是对NLP和机器学习有了基本的认识，了解到了不同的模型，也激起了我继续学习相关知识的兴趣。  \\
 	2. 感受到了理论和实践之间的巨大Gap，遇到了数据分析过程中一些很实际的问题，真切感受到了数据分析的一些困难，也激起了我对于利用数据科学解决这些困难的兴趣。\\
@@ -732,6 +750,8 @@ $P \left( \omega _ { i } | c _ { j } \right) = \frac { \text {weight} \left( \om
    	\subsection{分工说明}
    	\noindent
  	吴雨菲：\\
+ 	1. SOMTE算法调研\\
+ 	2. 期末报告编写(3.2.1, 3.2.2, 3.2.3, 3.3.1, 3.3.2, 3.3.3 部分)\\[10pt]
     何秦兴：\\
     1. LSTM模型调研与编程实验\\
     2. 期末报告编写(3.3.4 , 3.3.5, 3.3.6, 3.2.4 部分)\\[10pt]
@@ -740,7 +760,7 @@ $P \left( \omega _ { i } | c _ { j } \right) = \frac { \text {weight} \left( \om
     2. LDA主题模型调研与编程实验 \\
     3. 框架代码实现与方案具体实现，线上测试提交和比对调整参数 \\
     4. 和何秦兴合作完成LSTM模型编程实现 \\
-    5. 期末报告编写(1,2,4 部分)排版 \\
+    5. 期末报告编写(1, 2, 4 部分)排版 \\
    \section{参考文献}
    \noindent
    1. wikipedia:LSTM\\
